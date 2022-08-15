@@ -1,0 +1,160 @@
+<html lang="en"
+      layout:decorate="~{/index}"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="http://www.thymeleaf.org">
+
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper" layout:fragment="content">
+    <!-- Content Header (Page header) -->
+    <div class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1 class="m-0 text-dark"> Add Maintenance Type Management</h1>
+                </div>
+                <!-- /.col -->
+                <div class="col-sm-6">
+
+                </div>
+                <!-- /.col -->
+            </div>
+            <!-- /.row -->
+        </div>
+        <!-- /.container-fluid -->
+    </div>
+    <!-- /.content-header -->
+
+    <!-- Main content -->
+    <div class="content">
+        <div class="container-fluid">
+
+            <div class="row">
+                <!-- left column -->
+                <div class="col-md-12">
+                    <!-- general form elements -->
+                    <div class="card card-primary">
+                        <!-- form start -->
+                        <form role="form">
+                            <div class="card-body">
+                                <div class="row">
+
+                                   <!-- <div class="col-1">
+                                        <div class="navbar navbar-light">
+                                            <div class="input-group input-group-sm">
+                                                <div class="input-group-append">
+                                                    <button class="btn btn-navbar" type="button">
+                                                        <i class="fas fa-search"></i>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>-->
+
+                                </div>
+                            </div>
+                            <!-- /.card-body -->
+
+                            <div class="card-footer">
+                                <button class="btn btn btn-primary" id="addNewMaintenanceTypeBtn" type="button">
+                                   Add Maintenance Type
+                                </button>
+                                <button class="btn btn-secondary" onclick="resetMaintenanceType()" type="button">
+                                    Reset
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <!--/.col (left) -->
+            </div>
+
+            <div class="row collapse" id="maintenanceTypePnl">
+                <!-- left column -->
+                <div class="col-md-12 ">
+                    <!-- general form elements -->
+                    <div class="card card-primary card-outline">
+                        <div class="card-header">
+                            <h3 class="card-title"> Maintenance Types</h3>
+                        </div>
+                        <!-- /.card-header -->
+                        <!-- form start -->
+                        <form role="form">
+                            <div class="card-body">
+                                <!-- /.card-body -->
+                                <div class = row>
+                                    <div class="col-6">
+                                    <div class="form-group">
+                                        <label> Add Maintenance Type</label>
+                                        <input class="form-control" id="addMaintenanceTypeId"
+                                               placeholder="Add Maintenance Type"
+                                               type="text"/>
+                                    </div>
+                                    </div>
+
+                                        <div class="col-6">
+                                            <div class="form-group">
+                                                <label>Select Status</label>
+                                                <select class="custom-select" id="maintenanceTypeStatusId">
+                                                    <option value="-1">--Your status--</option>
+                                                    <option value="ACTIVE">ACTIVE</option>
+                                                    <option value="INACTIVE">INACTIVE</option>
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                </div>
+                                <div class="card-footer">
+                                    <button class="btn  bg-gradient-success" id="maintenanceTypeSaveBtnId" onclick="saveMaintenanceType()" type="button">
+                                        Submit
+                                    </button>
+                                    <button class="btn  bg-gradient-success" id="maintenanceTypeUpdateBtnId" onclick="updateMaintenanceType()" type="button">
+                                        Update
+                                    </button>
+                                    <button class="btn  bg-gradient-warning" onclick="clearMaintenanceType()" type="button">
+                                        Clear
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <!--/.col (left) -->
+            </div>
+            <!-- /.row -->
+
+            <div class="card card-primary card-outline collapse" id="viewPersonDataTableId">
+                <div class="card-header">
+                    <h3 class="card-title">Person Detail</h3>
+                </div>
+                <!-- /.card-header -->
+
+                <!-- /.card-body -->
+            </div>
+
+            <div class="card card-primary card-outline">
+                <div class="card-header">
+                    <h3 class="card-title">Maintenance Type detail</h3>
+                </div>
+                <!-- /.card-header -->
+                <div class="card-body">
+                    <table class="table table-bordered table-striped dataTable" id="maintenanceTypeTable">
+                        <thead>
+                        <tr>
+                            <th>Maintenance Type</th>
+                            <th> Status</th>
+                            <th> Action</th>
+                        </tr>
+                        </thead>
+                    </table>
+                </div>
+                <!-- /.card-body -->
+            </div>
+        </div>
+        <!-- /.container-fluid -->
+    </div>
+    <input type="hidden" id="maintenanceTypeId">
+    <script async th:src="@{assets/pages/maintenaneType.js}"></script>
+    <!-- /.content -->
+</div>
+<!-- /.content-wrapper -->
+</html>

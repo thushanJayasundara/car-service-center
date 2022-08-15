@@ -1,0 +1,200 @@
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{/index}">
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper" layout:fragment="content">
+    <!-- Content Header (Page header) -->
+    <div class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1 class="m-0 text-dark">Maintenance Management</h1>
+                </div>
+                <!-- /.col -->
+                <div class="col-sm-6">
+
+                </div>
+                <!-- /.col -->
+            </div>
+            <!-- /.row -->
+        </div>
+        <!-- /.container-fluid -->
+    </div>
+    <!-- /.content-header -->
+
+    <!-- Main content -->
+    <div class="content">
+        <div class="container-fluid">
+
+            <div class="row">
+                <!-- left column -->
+                <div class="col-md-12">
+                    <!-- general form elements -->
+                    <div class="card card-primary">
+                        <!-- form start -->
+                        <form role="form">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-6">
+                                        <div class="navbar navbar-light">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /.card-body -->
+
+                            <div class="card-footer">
+                                <button class="btn btn-primary" id="addNewMaintenanceBtn" type="button">
+                                    Add Maintenance
+                                </button>
+                                <button class="btn btn-secondary" onclick="resetMaintenancePnl()" type="button">
+                                    Reset Maintenance
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <!--/.col (left) -->
+            </div>
+            <!-- /.row -->
+
+            <div class="row">
+                <!-- left column -->
+                <div class="col-md-12 collapse" id="maintenancePnl">
+                    <!-- general form elements -->
+                    <div class="card card-primary card-outline">
+                        <div class="card-header">
+                            <h3 class="card-title">Enter Maintenance detail</h3>
+                        </div>
+                        <!-- /.card-header -->
+                        <!-- form start -->
+                        <form role="form">
+                            <div class="card-body">
+
+                                <div class="row">
+                                    <div class="col-6">
+                                        <label>Search Customer</label>
+                                        <div class="navbar navbar-light">
+                                            <div class="input-group input-group-sm">
+                                                <input
+                                                        id="findCustomerNicId"
+                                                        aria-label="Search"
+                                                        class="form-control form-control-navbar"
+                                                        placeholder="Search Customer by NIC"
+                                                        type="search"
+                                                        onkeyup="getCustomerToMapMaintenance()"
+                                                />
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-6">
+                                        <div class="form-group">
+                                            <label>Select Customer</label>
+                                            <select onclick="setVehicleNumber(value)" class="form-control" id="customerMaintenId">
+                                                <option value="-1">--Select Customer--</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-6">
+                                        <div class="form-group">
+                                            <label>Select Maintenance Type</label>
+                                            <select class="form-control" id="setMaintenanceTypeId">
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="form-group">
+                                            <label>Vehicle Number</label>
+                                            <input disabled class="form-control" id="vehicleNoId" placeholder="Enter Vehicle Number"
+                                                   type="text"/>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-6">
+                                        <div class="form-group">
+                                            <label>Other Description</label>
+                                            <textarea class="form-control" id="otherDescriptionId" placeholder="Enter other descriptions"
+                                                      rows = "3"></textarea>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>Select Repair Types</label>
+                                            <div class="row" id="repair_div">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-6">
+                                        <div class="form-group">
+                                            <label>Select Status</label>
+                                            <select class="form-control" id="maintenanceStatusId">
+                                                <option value="-1">--Select Status--</option>
+                                                <option value="ACTIVE">ACTIVE</option>
+                                                <option value="INACTIVE">INACTIVE</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <!-- /.card-body -->
+
+                            <div class="card-footer">
+                                <button id="maintenanceSaveBtn" class="btn  bg-gradient-success" onclick="saveMaintenance()" type="button">
+                                    Submit
+                                </button>
+                                <button id="maintenanceUpdateBtn" class="btn  bg-gradient-success" onclick="updateMaintenance()" type="button">
+                                    Update
+                                </button>
+                                <button class="btn  bg-gradient-warning" onclick="clearMaintenance()" type="button">
+                                    Clear
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <!--/.col (left) -->
+            </div>
+            <!-- /.row -->
+            <div class="card card-primary card-outline">
+                <div class="card-header">
+                    <h3 class="card-title">Privilege details</h3>
+                </div>
+                <!-- /.card-header -->
+                <div class="card-body">
+                    <table class="table table-bordered table-striped dataTable" id="maintenanceTable">
+                        <thead>
+                        <tr>
+                            <th> Maintenance Type </th>
+                            <th> Repair Type </th>
+                            <th> Vehicle Number </th>
+                            <th> Other Description </th>
+                            <th> Status </th>
+                            <th> Action </th>
+                        </tr>
+                        </thead>
+                    </table>
+                </div>
+                <!-- /.card-body -->
+            </div>
+        </div>
+        <!-- /.container-fluid -->
+    </div>
+    <input type="hidden" id="maintenanceId">
+    <script async th:src="@{assets/pages/Maintenance.js}"></script>
+    <!-- /.content -->
+</div>
+<!-- /.content-wrapper -->
+</html>

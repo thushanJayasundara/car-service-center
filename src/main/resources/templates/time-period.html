@@ -1,0 +1,175 @@
+<html lang="en"
+      layout:decorate="~{/index}"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="http://www.thymeleaf.org">
+
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper" layout:fragment="content">
+    <!-- Content Header (Page header) -->
+    <div class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1 class="m-0 text-dark"> Add Time Period Management</h1>
+                </div>
+                <!-- /.col -->
+                <div class="col-sm-6">
+
+                </div>
+                <!-- /.col -->
+            </div>
+            <!-- /.row -->
+        </div>
+        <!-- /.container-fluid -->
+    </div>
+    <!-- /.content-header -->
+
+    <!-- Main content -->
+    <div class="content">
+        <div class="container-fluid">
+
+            <div class="row">
+                <!-- left column -->
+                <div class="col-md-12">
+                    <!-- general form elements -->
+                    <div class="card card-primary">
+                        <!-- form start -->
+                        <form role="form">
+                            <div class="card-body">
+                                <div class="row">
+
+                                    <!-- <div class="col-1">
+                                         <div class="navbar navbar-light">
+                                             <div class="input-group input-group-sm">
+                                                 <div class="input-group-append">
+                                                     <button class="btn btn-navbar" type="button">
+                                                         <i class="fas fa-search"></i>
+                                                     </button>
+                                                 </div>
+                                             </div>
+                                         </div>
+                                     </div>-->
+
+                                </div>
+                            </div>
+                            <!-- /.card-body -->
+
+                            <div class="card-footer">
+                                <button class="btn btn btn-primary" id="setTimePeriodBtn" type="button">
+                                    Add Time Period
+                                </button>
+                                <button class="btn btn-secondary" onclick="resetTimePeriod()" type="button">
+                                    Reset
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <!--/.col (left) -->
+            </div>
+
+            <div class="row collapse" id="timePeriodPnl">
+                <!-- left column -->
+                <div class="col-md-12 ">
+                    <!-- general form elements -->
+                    <div class="card card-primary card-outline">
+                        <div class="card-header">
+                            <h3 class="card-title"> Time Periods</h3>
+                        </div>
+                        <!-- /.card-header -->
+                        <!-- form start -->
+                        <form role="form">
+                            <div class="card-body">
+                                <!-- /.card-body -->
+
+
+                                        <div class ="row">
+                                            <div class="col-6">
+                                                <div class="form-group">
+                                                    <label>Time To</label>
+                                                    <input class="form-control"
+                                                           id="timeToId"
+                                                           placeholder="Enter Time To"
+                                                           type="time"/>
+                                                </div>
+                                            </div>
+                                            <div class="col-6">
+                                                <div class="form-group">
+                                                    <label>Time From</label>
+                                                    <input class="form-control"
+                                                           id="timeFromId"
+                                                           placeholder="Enter Time From"
+                                                           type="time"
+                                                    >
+                                                </div>
+                                        </div>
+                                    </div>
+
+                                        <div class="col-6">
+                                            <div class="form-group">
+                                                <label>Select Status</label>
+                                                <select class="custom-select" id="timePeriodStatusId">
+                                                    <option value="-1">--Your status--</option>
+                                                    <option value="ACTIVE">ACTIVE</option>
+                                                    <option value="INACTIVE">INACTIVE</option>
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                <div class="card-footer">
+                                    <button class="btn  bg-gradient-success" id="timePeriodSaveBtnId" onclick="saveTimePeriod()" type="button">
+                                        Submit
+                                    </button>
+                                    <button class="btn  bg-gradient-success" id="timePeriodUpdateBtnId" onclick="updateTimePeriod()" type="button">
+                                        Update
+                                    </button>
+                                    <button class="btn  bg-gradient-warning" onclick="clearTimePeriod()" type="button">
+                                        Clear
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <!--/.col (left) -->
+            </div>
+            <!-- /.row -->
+
+            <div class="card card-primary card-outline collapse" id="viewPersonDataTableId">
+                <div class="card-header">
+                    <h3 class="card-title">Person Detail</h3>
+                </div>
+                <!-- /.card-header -->
+
+                <!-- /.card-body -->
+            </div>
+
+            <div class="card card-primary card-outline">
+                <div class="card-header">
+                    <h3 class="card-title">Time Period detail</h3>
+                </div>
+                <!-- /.card-header -->
+                <div class="card-body">
+                    <table class="table table-bordered table-striped dataTable" id="timePeriodTable">
+                        <thead>
+                        <tr>
+                            <th> Time Code</th>
+                            <th> Time To </th>
+                            <th> Time From </th>
+                            <th> Status</th>
+                            <th> Action</th>
+                        </tr>
+                        </thead>
+                    </table>
+                </div>
+                <!-- /.card-body -->
+            </div>
+        </div>
+        <!-- /.container-fluid -->
+    </div>
+    <input type="hidden" id="timePeriodId">
+    <script async th:src="@{assets/pages/timePeriod.js}"></script>
+    <!-- /.content -->
+</div>
+<!-- /.content-wrapper -->
+</html>

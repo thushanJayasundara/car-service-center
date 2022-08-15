@@ -1,0 +1,100 @@
+<div  th:fragment="nav_bar" xmlns:th="http://www.thymeleaf.org">
+    <aside class="main-sidebar sidebar-light-primary elevation-4">
+        <!-- Brand Logo -->
+        <a class="brand-link" href="index3.html">
+            <img    alt="AdminLTE Logo"
+                    class="brand-image img-circle elevation-3"
+                    style="opacity: 0.8"
+                    th:src="@{assets/dist/img/AdminLTELogo.png}"
+            />
+            <span class="brand-text font-weight-light">Auto Miraj</span>
+        </a>
+
+        <!-- Sidebar -->
+            <!-- Sidebar Menu -->
+            <nav class="mt-2">
+                <ul
+                        class="nav nav-pills nav-sidebar flex-column nav-child-indent"
+                        data-accordion="false"
+                        data-widget="treeview"
+                        role="menu"
+                >
+                    <!-- Add icons to the links using the .nav-icon class
+                     with font-awesome or any other icon font library -->
+                    <li class="nav-item has-treeview menu-open">
+                        <a class="nav-link active" id="navDashbord" href="/dashboard">
+                            <i class="nav-icon fas fa-tachometer-alt"></i>
+                            <p>Dashboard</p>
+                        </a>
+                    </li>
+                    <div sec:authorize="hasRole('ROLE_ADMIN')">
+                    <li class="nav-item">
+                        <a class="nav-link" id="navUser" href="/user">
+                            <i class="nav-icon fas fa-user"></i>
+                            <p>User</p>
+                        </a>
+                    </li>
+                    </div>
+                    <li class="nav-item has-treeview">
+                        <a class="nav-link" id="navCustomer" href="/customer">
+                            <i class="nav-icon fas fa-users"></i>
+                            <p>Customer</p>
+                        </a>
+                    </li>
+                    <li class="nav-item has-treeview">
+                        <a class="nav-link" id="navMainyenance" href="/maintenance">
+                            <i class="nav-icon fas fa-tools"></i>
+                            <p>Maintenance</p>
+                        </a>
+                    </li>
+                    <div sec:authorize="hasRole('ROLE_ADMIN')">
+                    <li class="nav-item has-treeview">
+                        <a class="nav-link" id="navBooking" href="/booking">
+                            <i class="nav-icon fab fa-servicestack"></i>
+                            <p>Booking</p>
+                        </a>
+                    </li>
+                    </div>
+                    <div sec:authorize="hasRole('ROLE_ADMIN')">
+                    <li class="nav-item has-treeview">
+                        <a class="nav-link" href="#">
+                            <i class="nav-icon fas fa-digital-tachograph"></i>
+                            <p>
+                                Master Options
+                                <i class="fas fa-angle-left right"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a class="nav-link" id="navSlot" href="/slot-type">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Slot type</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="navMaintenanceType" href="/maintenance-type">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Maintenance Type</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="navRepair" href="/repair-type">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Repair Type</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="navTime" href="/time-period">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Time period</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+            <!-- /.sidebar-menu -->
+        </div>
+        <!-- /.sidebar -->
+    </aside>
+</div>

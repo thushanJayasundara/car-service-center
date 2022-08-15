@@ -1,0 +1,77 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <div th:replace="fragments/header :: head"></div>
+</head>
+  <!--
+BODY TAG OPTIONS:
+=================
+Apply one or more of the following classes to to the body tag
+to get the desired effect
+|---------------------------------------------------------|
+|LAYOUT OPTIONS | sidebar-collapse                        |
+|               | sidebar-mini                            |
+|---------------------------------------------------------|
+-->
+  <body class="hold-transition login-page">
+    <div class="login-box">
+      <div class="login-logo">
+        <a href="/login"><b>AUTO MIRAJ CAR SERVICE CENTER</b></a>
+      </div>
+      <!-- /.login-logo -->
+      <div class="card">
+        <div class="card-body login-card-body">
+          <p class="login-box-msg">Sign in to start your session</p>
+
+          <form method="post" th:action="@{/login}">
+            <div class="input-group mb-3">
+              <input class="form-control" id ="username" name = "username" placeholder="User Name" type="text" />
+              <div class="input-group-append">
+                <div class="input-group-text">
+                  <span class="fas fa-user"></span>
+                </div>
+              </div>
+            </div>
+            <div class="input-group mb-3">
+              <input
+                class="form-control"
+                id="password"
+                name="password" placeholder="Password"
+                type="password"
+              />
+              <div class="input-group-append">
+                <div class="input-group-text">
+                  <span class="fas fa-lock"></span>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-8">
+                <div th:if="${param.error}">
+                  <div class="text-danger">Invalid username or
+                    password.</div>
+                </div>
+              </div>
+              <!-- /.col -->
+              <div class="col-4">
+                <button class="btn btn-primary btn-block" type="submit">
+                  Sign In
+                </button>
+              </div>
+              <!-- /.col -->
+            </div>
+          </form>
+        </div>
+        <!-- /.login-card-body -->
+      </div>
+    </div>
+    <!-- /.login-box -->
+    <!-- jQuery -->
+    <script th:src="@{assets/plugins/jquery/jquery.min.js}"></script>
+    <!-- Bootstrap -->
+    <script th:src="@{assets/plugins/bootstrap/js/bootstrap.bundle.min.js}"></script>
+    <!-- AdminLTE -->
+    <script th:src="@{assets/dist/js/adminlte.js}"></script>
+
+  </body>
+</html>

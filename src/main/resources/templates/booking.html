@@ -1,0 +1,57 @@
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{/index}">
+<div class="content-wrapper" layout:fragment="content">
+    <!-- Content Header (Page header) -->
+    <div class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1 class="m-0 text-dark">Booking Management</h1>
+                </div>
+                <!-- /.col -->
+                <div class="col-sm-6">
+
+                </div>
+                <!-- /.col -->
+            </div>
+            <!-- /.row -->
+        </div>
+        <!-- /.container-fluid -->
+    </div>
+    <!-- /.content-header -->
+
+    <!-- Main content -->
+    <div class="content">
+        <div class="container-fluid">
+
+            <!-- /.row -->
+            <div class="card card-primary card-outline">
+                <div class="card-header">
+                    <h3 class="card-title">Booking details</h3>
+                </div>
+                <!-- /.card-header -->
+                <div class="card-body">
+                    <table class="table table-bordered table-striped dataTable" id="personTable">
+                        <thead>
+                        <tr>
+                            <th>Slot Code</th>
+                            <th>Time Code</th>
+                            <th>Maintenance Type</th>
+                            <th>Status</th>
+                        </tr>
+                        </thead>
+                    </table>
+                </div>
+                <!-- /.card-body -->
+            </div>
+        </div>
+        <!-- /.container-fluid -->
+    </div>
+    <input type="hidden" id="personId">
+    <script async th:src="@{assets/pages/booking.js}"></script>
+    <!-- /.content -->
+</div>
+<!-- /.content-wrapper -->
+</html>

@@ -1,0 +1,206 @@
+<html lang="en"
+      layout:decorate="~{/index}"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="http://www.thymeleaf.org">
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper" layout:fragment="content">
+    <!-- Content Header (Page header) -->
+    <div class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1 class="m-0 text-dark">Customer Management</h1>
+                </div>
+                <!-- /.col -->
+                <div class="col-sm-6">
+
+                </div>
+                <!-- /.col -->
+            </div>
+            <!-- /.row -->
+        </div>
+        <!-- /.container-fluid -->
+    </div>
+    <!-- /.content-header -->
+
+    <!-- Main content -->
+    <div class="content">
+        <div class="container-fluid">
+
+            <div class="row">
+                <!-- left column -->
+                <div class="col-md-12">
+                    <!-- general form elements -->
+                    <div class="card card-primary">
+                        <!-- form start -->
+                        <form role="form">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-6">
+                                        <div class="navbar navbar-light">
+                                            <div class="input-group input-group-sm">
+                                                <input
+                                                        id="searchCustomerId"
+                                                        aria-label="Search"
+                                                        class="form-control form-control-navbar"
+                                                        placeholder="Search by NIC Number"
+                                                        type="search"
+                                                />
+                                                <div class="input-group-append">
+                                                    <button class="btn btn-navbar" onclick="searchCustomerByNic()"
+                                                            type="button">
+                                                        <i class="fas fa-search"></i>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /.card-body -->
+
+                            <div class="card-footer">
+                                <button class="btn btn-primary" id="addNewCustomerBtn" type="button">
+                                    Add New Customer
+                                </button>
+                                <button class="btn btn-secondary" onclick="resetGNDivision()" type="button">
+                                    Reset Customer
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <!--/.col (left) -->
+            </div>
+
+            <div class="row">
+                <!-- left column -->
+                <div class="col-md-12 collapse" id="customerPnl">
+                    <!-- general form elements -->
+                    <div class="card card-primary card-outline">
+                        <div class="card-header">
+                            <h3 class="card-title">Enter Customer details</h3>
+                        </div>
+                        <!-- /.card-header -->
+                        <!-- form start -->
+                        <form role="form">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-6">
+                                        <div class="form-group">
+                                            <label>First Name</label>
+                                            <input class="form-control" id="firstNameId"
+                                                   placeholder="Enter your First Name"
+                                                   type="text"/>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="form-group">
+                                            <label>Last Name</label>
+                                            <input class="form-control" id="lastNameId"
+                                                   placeholder="Enter your Last Name" rows="2">
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="form-group">
+                                            <label>Address</label>
+                                            <textarea class="form-control" id="addressId"
+                                                      placeholder="Enter your Address" rows="2"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="form-group">
+                                            <label>Email</label>
+                                            <input class="form-control" id="emailId" placeholder="Enter your Email"
+                                                   type="text"/>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="form-group">
+                                            <label>Mobile Number</label>
+                                            <input class="form-control" id="mobileNumberId"
+                                                   placeholder="Enter your Mobile Number"
+                                                   type="number"/>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="form-group">
+                                            <label>Vehicle Number</label>
+                                            <input class="form-control" id="vehicleNoId"
+                                                   placeholder="Enter your Vehicle Number"
+                                                   type="text"/>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="form-group">
+                                            <label>NIC Number</label>
+                                            <input class="form-control" id="nicId" placeholder="Enter your NIC Number"
+                                                   type="text"/>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="form-group">
+                                            <label>Select Status</label>
+                                            <select class="custom-select" id="customerStatusId">
+                                                <option value="-1">--Your status--</option>
+                                                <option value="ACTIVE">ACTIVE</option>
+                                                <option value="INACTIVE">INACTIVE</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <!-- /.card-body -->
+
+                            <div class="card-footer">
+                                <button class="btn bg-gradient-success" id="customerSaveBtnId" onclick="saveCustomer()" type="button">
+                                    Submit
+                                </button>
+                                <button class="btn bg-gradient-success" id="customerUpdateBtnId"
+                                        onclick="updateCustomer()" type="button">
+                                    Update
+                                </button>
+                                <button class="btn bg-gradient-warning" onclick="clearCustomer()" type="button">
+                                    Clear
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <!--/.col (left) -->
+            </div>
+            <!-- /.row -->
+            <div class="card card-primary card-outline">
+                <div class="card-header">
+                    <h3 class="card-title">Customer Details</h3>
+                </div>
+                <!-- /.card-header -->
+                <div class="card-body">
+                    <table class="table table-bordered table-striped dataTable" id="customerTable">
+                        <thead>
+                        <tr>
+                            <th> First Name</th>
+                            <th> Last Name</th>
+                            <th> Address</th>
+                            <th> Email</th>
+                            <th> Phone Number</th>
+                            <th> Vehicle Number</th>
+                            <th> NIC Number</th>
+                            <th>Status</th>
+                            <th> Action</th>
+                        </tr>
+                        </thead>
+                    </table>
+                </div>
+                <!-- /.card-body -->
+            </div>
+        </div>
+        <!-- /.container-fluid -->
+    </div>
+    <input type="hidden" id="customerId">
+    <script async th:src="@{assets/pages/customer.js}"></script>
+    <!-- /.content -->
+</div>
+<!-- /.content-wrapper -->
+</html>
